@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Downloader</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            transition: background-color 0.5s;
+        }
+        .dark-mode {
+            background-color: #1a202c;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark-mode">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-4">Video Downloader</h1>
+        <div>
+            <input type="text" id="videoUrl" class="p-2 border border-gray-400 rounded w-full" placeholder="Enter video URL">
+        </div>
+        <div class="mt-4">
+            <label for="format" class="mr-2">Select Format:</label>
+            <select id="format" class="p-2 border border-gray-400 rounded">
+                <option value="mp4">MP4</option>
+                <option value="mp3">MP3</option>
+            </select>
+        </div>
+        <button id="downloadBtn" class="mt-4 bg-blue-500 text-white p-2 rounded">Download</button>
+        <div id="loading" class="hidden mt-2">Loading...</div>
+        <div id="statusMsg" class="mt-2"></div>
+    </div>
+    <script>
+        const downloadBtn = document.getElementById('downloadBtn');
+        const videoUrlInput = document.getElementById('videoUrl');
+        const loading = document.getElementById('loading');
+        const statusMsg = document.getElementById('statusMsg');
+
+        downloadBtn.addEventListener('click', function() {
+            loading.classList.remove('hidden');
+            statusMsg.textContent = '';
+            const videoUrl = videoUrlInput.value;
+            const format = document.getElementById('format').value;
+            // Simulate download process
+            setTimeout(() => {
+                loading.classList.add('hidden');
+                statusMsg.textContent = 'Download link for ' + format + ' is ready!';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
